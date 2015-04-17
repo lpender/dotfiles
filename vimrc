@@ -199,4 +199,5 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-
+" Write when focus lost
+au FocusLost * :wa
