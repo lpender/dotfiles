@@ -3,6 +3,7 @@
 .bundle
 .env.local
 .byebug_history
+.env.local
 db/*.sqlite3
 log/*.log
 rerun.txt
