@@ -34,6 +34,9 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+# Git Setup
+export GIT_EDITOR=vi
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
