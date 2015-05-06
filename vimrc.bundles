@@ -54,7 +54,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ctags.vim'
-Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/tComment'
 
 " Colors
