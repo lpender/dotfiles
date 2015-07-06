@@ -18,7 +18,6 @@ call plug#begin('~/.vim/bundle')
 Plug 'gmarik/vundle'
 Plug 'burnettk/vim-angular'
 Plug 'christoomey/vim-run-interactive'
-<<<<<<< HEAD
 
 " If fzf has already been installed via Homebrew, use the existing fzf
 " Otherwise, install fzf. The `--all` flag makes fzf accessible outside of vim
