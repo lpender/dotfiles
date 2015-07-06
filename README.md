@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+thoughtbot dotfiles (lpender flavor)
 ===================
 
 Requirements
