@@ -10,6 +10,9 @@ local _old_path="$PATH"
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
 
+# ensure dotfiles bin directory is loaded first
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
 if [[ $PATH != $_old_path ]]; then
   # `colors` isn't initialized yet, so define a few manually
   typeset -AHg fg fg_bold
