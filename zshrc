@@ -37,6 +37,9 @@ _load_settings "$HOME/.zsh/configs"
 # Git Setup
 export GIT_EDITOR=vi
 
+# Pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
