@@ -11,6 +11,7 @@
   ci = commit -v
   co = checkout
   pf = push --force-with-lease
+  smush = !sh -c 'git pull && git merge $1 && git branch -D $1 && git push origin :$1' -
   st = status
   up = !git fetch origin && git rebase origin/master
   lg = log --color --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
