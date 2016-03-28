@@ -35,8 +35,4 @@ alias elasticsearch.stop="echo 'Stopping Elastic Search';launchctl unload ~/Libr
 alias ctags="`brew --prefix`/bin/ctags"
 
 # Override rm
-alias rm="rmtrash"
-
-# .devlog
-alias note="echo `date` $1 >> ~/.devlog"
-alias notes="cat ~/.devlog"
+alias trash="rmtrash"
