@@ -165,11 +165,6 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
-
 " Write when focus lost
 au FocusLost * :wa
 
@@ -181,3 +176,17 @@ map \ :NERDTreeToggle<CR>
 
 " Mouse
 set mouse=a
+
+" Trailing Whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Puts the caller
+" http://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
+
+
