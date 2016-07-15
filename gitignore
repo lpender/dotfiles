@@ -2,6 +2,7 @@
 *.sw[nop]
 .bundle
 .env.local
+.byebug_history
 db/*.sqlite3
 log/*.log
 rerun.txt
@@ -9,3 +10,4 @@ tags
 !tags/
 tmp/**/*
 !tmp/cache/.keep
+*.pyc

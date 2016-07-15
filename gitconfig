@@ -8,10 +8,10 @@
   aa = add --all
   ap = add --patch
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-  ca = commit --amend -v
   ci = commit -v
   co = checkout
   smush = !sh -c 'git pull && git merge $1 && git branch -D $1 && git push origin :$1' -
+  pf = push --force-with-lease
   st = status
   up = !git fetch origin && git rebase origin/master
   lg = log --color --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
