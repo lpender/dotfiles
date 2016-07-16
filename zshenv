@@ -1,3 +1,6 @@
+# ensure dotfiles bin directory is loaded first
+# export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
 local _old_path="$PATH"
 
 # Local config
@@ -29,6 +32,7 @@ if which rbenv &>/dev/null ; then
 fi
 
   cat <<MSG >&2
+
 ${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
 Please move that configuration to \`.zshrc.local' like so:
   ${fg_bold[white]}cat ~/.zshenv.local >> ~/.zshrc.local && rm ~/.zshenv.local${reset_color}
