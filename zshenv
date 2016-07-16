@@ -1,11 +1,11 @@
-local _old_path="$PATH"
-
 # ensure dotfiles bin directory is loaded first
 # export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # android SDK tools
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
+local _old_path="$PATH"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
@@ -24,6 +24,7 @@ if [[ $PATH != $_old_path ]]; then
   fi
 
   cat <<MSG >&2
+
 ${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
 Please move that configuration to \`.zshrc.local' like so:
   ${fg_bold[white]}cat ~/.zshenv.local >> ~/.zshrc.local && rm ~/.zshenv.local${reset_color}
