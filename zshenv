@@ -1,5 +1,5 @@
 # ensure dotfiles bin directory is loaded first
-# export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 local _old_path="$PATH"
 
@@ -24,10 +24,6 @@ if [[ $PATH != $_old_path ]]; then
     fg_bold[white]=""
     reset_color=""
   fi
-
-# android SDK tools
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 # load rbenv if available
 if which rbenv &>/dev/null ; then
