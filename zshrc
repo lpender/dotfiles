@@ -45,8 +45,8 @@ export GIT_EDITOR=vi
 # Pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
-
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
