@@ -32,8 +32,8 @@
 [diff]
   colorMoved = zebra
 [user]
-  name = Lee Pender
-  email = lpender@gmail.com
+	name = Lee Pender
+	email = lpender@gmail.com
 [filter "media"]
   required = true
   clean = git media clean %f
@@ -43,6 +43,7 @@
   smudge = git hawser smudge %f
   required = true
 [filter "lfs"]
-  clean = git lfs clean %f
-  smudge = git lfs smudge %f
-  required = true
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
