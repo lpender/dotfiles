@@ -12,3 +12,10 @@ tags
 tmp/**/*
 !tmp/cache/.keep
 *.pyc
+
+.idea
+*.iml
+
+.envrc
+.agignore
+.todo

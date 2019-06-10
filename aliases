@@ -1,3 +1,4 @@
+
 # Unix
 alias ll="ls -al"
 alias ln="ln -v"
@@ -12,6 +13,9 @@ alias b="bundle"
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
+# Tmux
+alias tm='tmux new -s `basename $PWD | tr " " "_"`'
+
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
@@ -20,6 +24,7 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Start/stop
 alias pg.start='echo "Starting postgresql";launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+alias pg.start-v='echo "Starting postgresql";rm /usr/local/var/postgres/postmaster.pid;postgres -D /usr/local/var/postgres'
 alias pg.stop='echo "Stopping postgresql";launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 
 alias mysql.start='echo "Starting mysql";launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
@@ -36,3 +41,9 @@ alias ctags="`brew --prefix`/bin/ctags"
 
 # Override rm
 alias trash="rmtrash"
+
+# Mine
+alias ethermine="geth --mine --etherbase 0xf95fAcCDdb14A212670015123Dc380232eAeB607"
+
+# nodenv
+# alias nvm="nodenv"

@@ -1,4 +1,4 @@
-" Leader
+"[VIEWER,EDITOR] Leader
 let mapleader = " "
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -67,17 +67,25 @@ if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+  "
+  " " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 1
+  "
+  " " ctrl-p ignore
+  " let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
     nnoremap \ :Ag<SPACE>
   endif
 endif
+
+" Use FZF instead of ctrl_p
+set rtp+=/usr/local/opt/fzf
+
+map ; :FZF<CR>
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -136,12 +144,19 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+" use ESLint for JS
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 
+" prettier, running before saving async  https://goo.gl/aLQyCi
+" let g:prettier#config#parser = 'typescript'
+let g:prettier#autoformat = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+let g:tsuquyomi_use_vimproc=1
+let g:tsuquyomi_use_local_typescript=0
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -167,9 +182,15 @@ set mouse=a
 " Trailing Whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+
 " Puts the caller
 " http://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html
 nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
+" Allow project specific overrides
+" https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
