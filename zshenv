@@ -22,6 +22,9 @@ export PATH=~/Applications/bin:$PATH
 
 local _old_path="$PATH"
 
+# FZF respect .gitignore t.ly/PjM38
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
 
@@ -43,7 +46,7 @@ if which rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
-  cat <<MSG >&2
+cat <<MSG >&2
 
 ${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
 Please move that configuration to \`.zshrc.local' like so:

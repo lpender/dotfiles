@@ -171,7 +171,7 @@ set diffopt+=vertical
 au FocusLost * :wa
 
 " Colorscheme
-colorscheme tomorrow-night-eighties
+colorscheme space-vim-dark
 
 " NerdTree
 map \ :NERDTreeToggle<CR>
