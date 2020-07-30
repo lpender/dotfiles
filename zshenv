@@ -1,3 +1,4 @@
+
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
@@ -16,20 +17,19 @@ export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 # http://themekit.cat/install/#unix-like
 export PATH=~/Applications/bin:$PATH
 
-# nodenv
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-local _old_path="$PATH"
-
 # FZF respect .gitignore t.ly/PjM38
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
+
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
+
+local _old_path="$PATH"
+
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
-#
-# ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 if [[ $PATH != $_old_path ]]; then
   # `colors` isn't initialized yet, so define a few manually
@@ -44,19 +44,11 @@ if [[ $PATH != $_old_path ]]; then
     reset_color=""
   fi
 
-# load rbenv if available
-if which rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
-cat <<MSG >&2
-
+  cat <<MSG >&2
 ${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
 Please move that configuration to \`.zshrc.local' like so:
   ${fg_bold[white]}cat ~/.zshenv.local >> ~/.zshrc.local && rm ~/.zshenv.local${reset_color}
-
 (called from ${(%):-%N:%i})
-
 MSG
 fi
 

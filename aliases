@@ -1,4 +1,3 @@
-
 # Unix
 alias ll="ls -al"
 alias ln="ln -v"
