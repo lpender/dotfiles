@@ -12,3 +12,14 @@ setopt promptsubst
 if ! env | grep -q '^PS1='; then
   PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 fi
+
+shopify_store_info() {
+  if [[ -f .current_store ]]; then
+    current_store=$(cat .current_store)
+  fi
+  if [[ -n $current_store ]]; then
+    echo " %{$fg_bold[red]%}$current_store%{$reset_color%}"
+  fi
+}
+setopt promptsubst
+PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info)$(shopify_store_info) %# '

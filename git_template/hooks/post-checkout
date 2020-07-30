@@ -3,4 +3,8 @@
 local_hook="$HOME"/.git_template.local/hooks/post-checkout
 [ -f "$local_hook" ] && . "$local_hook"
 
+repo_hook="`pwd`"/.githooks/post-checkout
+[ -f "$repo_hook" ] && . "$repo_hook"
+
 .git/hooks/ctags >/dev/null 2>&1 &
+
